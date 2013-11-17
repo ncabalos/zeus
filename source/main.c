@@ -8,6 +8,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include <p24Fxxxx.h>
+#include <FreeRTOS.h>
+
 #ifdef UNIT_TEST
 #include <unity.h>
 #include <unit_tests.h>
