@@ -206,8 +206,7 @@
         <property key="tracecontrol.stallontracebufferfull" value="false"/>
         <property key="tracecontrol.timestamp" value="2"/>
         <property key="tracecontrol.tracebufmax" value="546000"/>
-        <property key="tracecontrol.tracefile"
-                  value="/home/ncabalos/MPLABXProjects/template.X/defmplabxtrace.log"/>
+        <property key="tracecontrol.tracefile" value=""/>
         <property key="tracecontrol.traceresetonrun" value="false"/>
         <property key="uart1io.output" value="window"/>
         <property key="uart1io.outputfile" value=""/>
@@ -397,8 +396,7 @@
         <property key="tracecontrol.stallontracebufferfull" value="false"/>
         <property key="tracecontrol.timestamp" value="2"/>
         <property key="tracecontrol.tracebufmax" value="546000"/>
-        <property key="tracecontrol.tracefile"
-                  value="/home/ncabalos/MPLABXProjects/template.X/defmplabxtrace.log"/>
+        <property key="tracecontrol.tracefile" value=""/>
         <property key="tracecontrol.traceresetonrun" value="false"/>
         <property key="uart1io.output" value="window"/>
         <property key="uart1io.outputfile" value=""/>
