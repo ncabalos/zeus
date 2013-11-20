@@ -111,7 +111,7 @@ static unsigned char *pucAlignedHeap = NULL;
 		if( pucAlignedHeap == NULL )
 		{
 			/* Ensure the heap starts on a correctly aligned boundary. */
-			pucAlignedHeap = ( unsigned char * ) ( ( ( portPOINTER_SIZE_TYPE ) &ucHeap[ portBYTE_ALIGNMENT ] ) & ( ( portPOINTER_SIZE_TYPE ) ~portBYTE_ALIGNMENT_MASK ) );
+			pucAlignedHeap = ( unsigned char * ) ( ( ( unsigned int ) &ucHeap[ portBYTE_ALIGNMENT ] ) & ( ~portBYTE_ALIGNMENT_MASK ) );
 		}
 
 		/* Check there is enough room left for the allocation. */
