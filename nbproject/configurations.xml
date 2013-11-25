@@ -6,6 +6,8 @@
                    projectFiles="true">
       <itemPath>source/unit_tests.h</itemPath>
       <itemPath>source/FreeRTOSConfig.h</itemPath>
+      <itemPath>source/serio.h</itemPath>
+      <itemPath>source/HardwareConfig.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -30,6 +32,8 @@
       </logicalFolder>
       <itemPath>source/main.c</itemPath>
       <itemPath>source/UnityHooks.c</itemPath>
+      <itemPath>source/uart_pic24.c</itemPath>
+      <itemPath>source/serio.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -190,7 +194,7 @@
         <property key="codecoverage.outputfile" value=""/>
         <property key="oscillator.auxfrequency" value="120"/>
         <property key="oscillator.auxfrequencyunit" value="Mega"/>
-        <property key="oscillator.frequency" value="1"/>
+        <property key="oscillator.frequency" value="16"/>
         <property key="oscillator.frequencyunit" value="Mega"/>
         <property key="oscillator.rcfrequency" value="250"/>
         <property key="oscillator.rcfrequencyunit" value="Kilo"/>
