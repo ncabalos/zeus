@@ -8,6 +8,7 @@
       <itemPath>source/FreeRTOSConfig.h</itemPath>
       <itemPath>source/serio.h</itemPath>
       <itemPath>source/HardwareConfig.h</itemPath>
+      <itemPath>source/terminal.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -34,6 +35,7 @@
       <itemPath>source/UnityHooks.c</itemPath>
       <itemPath>source/uart_pic24.c</itemPath>
       <itemPath>source/serio.c</itemPath>
+      <itemPath>source/terminal.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -214,7 +216,7 @@
         <property key="tracecontrol.traceresetonrun" value="false"/>
         <property key="uart1io.output" value="window"/>
         <property key="uart1io.outputfile" value=""/>
-        <property key="uart1io.uartioenabled" value="false"/>
+        <property key="uart1io.uartioenabled" value="true"/>
       </Simulator>
       <item path="source/UnityHooks.c" ex="true" overriding="false">
         <C30>
