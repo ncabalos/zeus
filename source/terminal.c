@@ -17,7 +17,7 @@
 char terminalBuffer[MAX_BUFFER_SIZE];
 char * terminalBufferPtr;
 
-const char prompt[] = "zeus:~$";
+const char prompt[] = "zeus:~$ ";
 
 static xTaskHandle xTerminalTaskHandler;
 static void vTerminalTaskCode( void * pvParameters );
@@ -60,6 +60,7 @@ void vTerminalTaskCode(void * pvParameters)
     static uint16_t bytes_remaining = 0;
     static uint16_t command_result;
     static char byte_value;
+    uint16_t i, length;
 
     for (;;) {
         byte_count = UartRxDataAvailable(terminalUart);
@@ -76,7 +77,19 @@ void vTerminalTaskCode(void * pvParameters)
                 *terminalBufferPtr = 0;
                 /* Reset buffer pointer */
                 terminalBufferPtr = terminalBuffer;
-                command_result = parse_command(terminalBuffer);
+                length = strlen(terminalBuffer);
+
+                /* Remove any control characters */
+                for (i = 0; i < length; i++) {
+                    if (terminalBuffer[i] < 0x20) {
+                        terminalBuffer[i] = 0;
+                    }
+                }
+
+                if(strlen(terminalBuffer) > 0) {
+                    command_result = parse_command(terminalBuffer);
+                }
+
                 display_prompt(false);
             } else {
                 terminal_output_char(byte_value);
