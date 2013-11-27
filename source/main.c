@@ -13,6 +13,7 @@
 #include <p24Fxxxx.h>
 
 #include <serio.h>
+#include <terminal.h>
 
 #ifdef UNIT_TEST
 #include <unity.h>
@@ -33,12 +34,18 @@ static void HardwareInit(void);
 
 void HardwareInit(void)
 {
-    DebugUART = UartInit(UART_1,115200UL,SERIO_1STOPBIT,SERIO_NOPARITY);
+    DebugUART = UartInit(UART_2,115200UL,SERIO_1STOPBIT,SERIO_NOPARITY);
+}
+
+void ModuleInit(void)
+{
+    TerminalInit(DebugUART);
 }
 
 int main(int argc, char** argv)
 {
     HardwareInit();
+    ModuleInit();
     vTaskStartScheduler();
     return (EXIT_SUCCESS);
 }

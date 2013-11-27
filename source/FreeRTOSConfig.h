@@ -4,19 +4,19 @@
 
     VISIT http://www.FreeRTOS.org TO ENSURE YOU ARE USING THE LATEST VERSION.
 
-    ***************************************************************************
-     *                                                                       *
-     *    FreeRTOS provides completely free yet professionally developed,    *
-     *    robust, strictly quality controlled, supported, and cross          *
-     *    platform software that has become a de facto standard.             *
-     *                                                                       *
-     *    Help yourself get started quickly and support the FreeRTOS         *
-     *    project by purchasing a FreeRTOS tutorial book, reference          *
-     *    manual, or both from: http://www.FreeRTOS.org/Documentation        *
-     *                                                                       *
-     *    Thank you!                                                         *
-     *                                                                       *
-    ***************************************************************************
+ ***************************************************************************
+ *                                                                       *
+ *    FreeRTOS provides completely free yet professionally developed,    *
+ *    robust, strictly quality controlled, supported, and cross          *
+ *    platform software that has become a de facto standard.             *
+ *                                                                       *
+ *    Help yourself get started quickly and support the FreeRTOS         *
+ *    project by purchasing a FreeRTOS tutorial book, reference          *
+ *    manual, or both from: http://www.FreeRTOS.org/Documentation        *
+ *                                                                       *
+ *    Thank you!                                                         *
+ *                                                                       *
+ ***************************************************************************
 
     This file is part of the FreeRTOS distribution.
 
@@ -36,14 +36,14 @@
 
     1 tab == 4 spaces!
 
-    ***************************************************************************
-     *                                                                       *
-     *    Having a problem?  Start by reading the FAQ "My application does   *
-     *    not run, what could be wrong?"                                     *
-     *                                                                       *
-     *    http://www.FreeRTOS.org/FAQHelp.html                               *
-     *                                                                       *
-    ***************************************************************************
+ ***************************************************************************
+ *                                                                       *
+ *    Having a problem?  Start by reading the FAQ "My application does   *
+ *    not run, what could be wrong?"                                     *
+ *                                                                       *
+ *    http://www.FreeRTOS.org/FAQHelp.html                               *
+ *                                                                       *
+ ***************************************************************************
 
     http://www.FreeRTOS.org - Documentation, books, training, latest versions,
     license and Real Time Engineers Ltd. contact details.
@@ -61,7 +61,7 @@
     mission critical applications that require provable dependability.
 
     1 tab == 4 spaces!
-*/
+ */
 
 #ifndef FREERTOS_CONFIG_H
 #define FREERTOS_CONFIG_H
@@ -88,7 +88,7 @@
 #define configMAX_PRIORITIES			( ( unsigned portBASE_TYPE ) 4 )
 #define configMINIMAL_STACK_SIZE		( 115 )
 #define configTOTAL_HEAP_SIZE			( ( size_t ) 5120 )
-#define configMAX_TASK_NAME_LEN			( 4 )
+#define configMAX_TASK_NAME_LEN			( 16 )
 #define configUSE_TRACE_FACILITY		0
 #define configUSE_16_BIT_TICKS			1
 #define configIDLE_SHOULD_YIELD			1

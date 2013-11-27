@@ -1,0 +1,18 @@
+#!/bin/sh
+
+VERSION_FILE=source/version.h
+VERSION=$(git describe --long --abbrev=4 | sed s/"-g"/-/g)
+MAJOR_NUMBER=$(echo $VERSION | gawk -F - '{print $1}')
+MINOR_NUMBER=$(echo $VERSION | gawk -F - '{print $2}')
+SHA_NUMBER=$(echo $VERSION | gawk -F - '{print $3}')
+VERSION_STRING=\"$MAJOR_NUMBER.$MINOR_NUMBER\"
+SHA_STRING=\"$(echo $SHA_NUMBER | tr '[:lower:]' '[:upper:]')\"
+
+echo "Updating $VERSION_FILE"
+
+echo "#ifndef VERSION_H" > $VERSION_FILE
+echo "#define VERSION_H" >> $VERSION_FILE
+echo "#define VERSION_STRING $VERSION_STRING" >> $VERSION_FILE
+echo "#define SHA_STRING $SHA_STRING" >> $VERSION_FILE
+echo "#endif" >> $VERSION_FILE
+
