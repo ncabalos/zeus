@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   terminal.h
  * Author: ncabalos
  *
@@ -8,7 +8,7 @@
 #ifndef TERMINAL_H
 #define	TERMINAL_H
 
-extern void TerminalInit(void);
+extern void TerminalInit(UART_INFO * uart_info);
 
 #endif	/* TERMINAL_H */
 

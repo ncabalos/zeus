@@ -39,12 +39,11 @@ void HardwareInit(void)
 
 void ModuleInit(void)
 {
-    TerminalInit();
+    TerminalInit(DebugUART);
 }
 
 int main(int argc, char** argv)
 {
-    printf("testing");
     HardwareInit();
     ModuleInit();
     vTaskStartScheduler();

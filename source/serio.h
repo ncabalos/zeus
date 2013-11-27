@@ -38,9 +38,10 @@ typedef struct uart_s {
     uint16_t stop_bits;
     uint16_t parity;
     uint16_t uart_num;
-}UART_INFO;
+} UART_INFO;
 
-extern UART_INFO * UartInit(uint8_t uart_num, uint32_t baud_rate, uint16_t stop_bits, uint16_t parity);
+extern UART_INFO * UartInit(uint8_t uart_num, uint32_t baud_rate,
+                            uint16_t stop_bits, uint16_t parity);
 extern UART_INFO * UartGetInfo(uint8_t uart_num);
 extern uint16_t UartReset(UART_INFO * uart);
 extern uint16_t UartWriteData(UART_INFO * uart, uint8_t * data, uint8_t length);

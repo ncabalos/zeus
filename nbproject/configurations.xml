@@ -9,6 +9,7 @@
       <itemPath>source/serio.h</itemPath>
       <itemPath>source/HardwareConfig.h</itemPath>
       <itemPath>source/terminal.h</itemPath>
+      <itemPath>source/version.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -36,6 +37,7 @@
       <itemPath>source/uart_pic24.c</itemPath>
       <itemPath>source/serio.c</itemPath>
       <itemPath>source/terminal.c</itemPath>
+      <itemPath>source/parser.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -70,8 +72,8 @@
         </loading>
       </compileType>
       <makeCustomizationType>
-        <makeCustomizationPreStepEnabled>false</makeCustomizationPreStepEnabled>
-        <makeCustomizationPreStep></makeCustomizationPreStep>
+        <makeCustomizationPreStepEnabled>true</makeCustomizationPreStepEnabled>
+        <makeCustomizationPreStep>sh ${ProjectDir}/update-version</makeCustomizationPreStep>
         <makeCustomizationPostStepEnabled>false</makeCustomizationPostStepEnabled>
         <makeCustomizationPostStep></makeCustomizationPostStep>
         <makeCustomizationPutChecksumInUserID>false</makeCustomizationPutChecksumInUserID>
