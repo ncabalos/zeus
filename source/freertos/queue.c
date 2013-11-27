@@ -304,7 +304,8 @@ xQueueHandle xQueueGenericCreate( unsigned portBASE_TYPE uxQueueLength,
             /* Create the list of pointers to queue items.  The queue is one byte
             longer than asked for to make wrap checking easier/faster. */
             xQueueSizeInBytes = ( size_t ) ( uxQueueLength * uxItemSize ) +
-                                ( size_t ) 1; /*lint !e961 MISRA exception as the casts are only redundant for some ports. */
+                                ( size_t ) 1;
+            /*lint !e961 MISRA exception as the casts are only redundant for some ports. */
             pxNewQueue->pcHead = ( signed char *) pvPortMalloc( xQueueSizeInBytes );
 
             if( pxNewQueue->pcHead != NULL ) {
