@@ -1,0 +1,1 @@
+make clean && make -f nbproject/Makefile-default.mk SUBPROJECTS= .build-conf
