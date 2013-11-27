@@ -3,3 +3,4 @@ dist/
 nbproject/private/*
 nbproject/*.mk
 nbproject/*.properties
+source/version.h
