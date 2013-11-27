@@ -1,5 +1,5 @@
 /*
-    FreeRTOS V7.5.3 - Copyright (C) 2013 Real Time Engineers Ltd. 
+    FreeRTOS V7.5.3 - Copyright (C) 2013 Real Time Engineers Ltd.
     All rights reserved
 
     VISIT http://www.FreeRTOS.org TO ENSURE YOU ARE USING THE LATEST VERSION.
@@ -68,7 +68,7 @@
 #define INC_TASK_H
 
 #ifndef INC_FREERTOS_H
-	#error "include FreeRTOS.h must appear in source files before include task.h"
+#error "include FreeRTOS.h must appear in source files before include task.h"
 #endif
 
 #include "list.h"
@@ -96,68 +96,69 @@ extern "C" {
 typedef void * xTaskHandle;
 
 /* Task states returned by eTaskGetState. */
-typedef enum
-{
-	eRunning = 0,	/* A task is querying the state of itself, so must be running. */
-	eReady,			/* The task being queried is in a read or pending ready list. */
-	eBlocked,		/* The task being queried is in the Blocked state. */
-	eSuspended,		/* The task being queried is in the Suspended state, or is in the Blocked state with an infinite time out. */
-	eDeleted		/* The task being queried has been deleted, but its TCB has not yet been freed. */
+typedef enum {
+    eRunning = 0,	/* A task is querying the state of itself, so must be running. */
+    eReady,			/* The task being queried is in a read or pending ready list. */
+    eBlocked,		/* The task being queried is in the Blocked state. */
+    eSuspended,		/* The task being queried is in the Suspended state, or is in the Blocked state with an infinite time out. */
+    eDeleted		/* The task being queried has been deleted, but its TCB has not yet been freed. */
 } eTaskState;
 
 /*
  * Used internally only.
  */
-typedef struct xTIME_OUT
-{
-	portBASE_TYPE xOverflowCount;
-	portTickType  xTimeOnEntering;
+typedef struct xTIME_OUT {
+    portBASE_TYPE xOverflowCount;
+    portTickType  xTimeOnEntering;
 } xTimeOutType;
 
 /*
  * Defines the memory ranges allocated to the task when an MPU is used.
  */
-typedef struct xMEMORY_REGION
-{
-	void *pvBaseAddress;
-	unsigned long ulLengthInBytes;
-	unsigned long ulParameters;
+typedef struct xMEMORY_REGION {
+    void * pvBaseAddress;
+    unsigned long ulLengthInBytes;
+    unsigned long ulParameters;
 } xMemoryRegion;
 
 /*
  * Parameters required to create an MPU protected task.
  */
-typedef struct xTASK_PARAMTERS
-{
-	pdTASK_CODE pvTaskCode;
-	const signed char * const pcName;
-	unsigned short usStackDepth;
-	void *pvParameters;
-	unsigned portBASE_TYPE uxPriority;
-	portSTACK_TYPE *puxStackBuffer;
-	xMemoryRegion xRegions[ portNUM_CONFIGURABLE_REGIONS ];
+typedef struct xTASK_PARAMTERS {
+    pdTASK_CODE pvTaskCode;
+    const signed char * const pcName;
+    unsigned short usStackDepth;
+    void * pvParameters;
+    unsigned portBASE_TYPE uxPriority;
+    portSTACK_TYPE * puxStackBuffer;
+    xMemoryRegion xRegions[ portNUM_CONFIGURABLE_REGIONS ];
 } xTaskParameters;
 
 /* Used with the uxTaskGetSystemState() function to return the state of each task
 in the system. */
-typedef struct xTASK_STATUS
-{
-	xTaskHandle xHandle;						/* The handle of the task to which the rest of the information in the structure relates. */
-	const signed char *pcTaskName;				/* A pointer to the task's name.  This value will be invalid if the task was deleted since the structure was populated! */
-	unsigned portBASE_TYPE xTaskNumber;			/* A number unique to the task. */
-	eTaskState eCurrentState;					/* The state in which the task existed when the structure was populated. */
-	unsigned portBASE_TYPE uxCurrentPriority;	/* The priority at which the task was running (may be inherited) when the structure was populated. */
-	unsigned portBASE_TYPE uxBasePriority;		/* The priority to which the task will return if the task's current priority has been inherited to avoid unbounded priority inversion when obtaining a mutex.  Only valid if configUSE_MUTEXES is defined as 1 in FreeRTOSConfig.h. */
-	unsigned long ulRunTimeCounter;				/* The total run time allocated to the task so far, as defined by the run time stats clock.  See http://www.freertos.org/rtos-run-time-stats.html.  Only valid when configGENERATE_RUN_TIME_STATS is defined as 1 in FreeRTOSConfig.h. */
-	unsigned short usStackHighWaterMark;		/* The minimum amount of stack space that has remained for the task since the task was created.  The closer this value is to zero the closer the task has come to overflowing its stack. */
+typedef struct xTASK_STATUS {
+    xTaskHandle
+    xHandle;						/* The handle of the task to which the rest of the information in the structure relates. */
+    const signed char *
+    pcTaskName;				/* A pointer to the task's name.  This value will be invalid if the task was deleted since the structure was populated! */
+    unsigned portBASE_TYPE xTaskNumber;			/* A number unique to the task. */
+    eTaskState
+    eCurrentState;					/* The state in which the task existed when the structure was populated. */
+    unsigned portBASE_TYPE
+    uxCurrentPriority;	/* The priority at which the task was running (may be inherited) when the structure was populated. */
+    unsigned portBASE_TYPE
+    uxBasePriority;		/* The priority to which the task will return if the task's current priority has been inherited to avoid unbounded priority inversion when obtaining a mutex.  Only valid if configUSE_MUTEXES is defined as 1 in FreeRTOSConfig.h. */
+    unsigned long
+    ulRunTimeCounter;				/* The total run time allocated to the task so far, as defined by the run time stats clock.  See http://www.freertos.org/rtos-run-time-stats.html.  Only valid when configGENERATE_RUN_TIME_STATS is defined as 1 in FreeRTOSConfig.h. */
+    unsigned short
+    usStackHighWaterMark;		/* The minimum amount of stack space that has remained for the task since the task was created.  The closer this value is to zero the closer the task has come to overflowing its stack. */
 } xTaskStatusType;
 
 /* Possible return values for eTaskConfirmSleepModeStatus(). */
-typedef enum
-{
-	eAbortSleep = 0,		/* A task has been made ready or a context switch pended since portSUPPORESS_TICKS_AND_SLEEP() was called - abort entering a sleep mode. */
-	eStandardSleep,			/* Enter a sleep mode that will not last any longer than the expected idle time. */
-	eNoTasksWaitingTimeout	/* No tasks are waiting for a timeout so it is safe to enter a sleep mode that can only be exited by an external interrupt. */
+typedef enum {
+    eAbortSleep = 0,		/* A task has been made ready or a context switch pended since portSUPPORESS_TICKS_AND_SLEEP() was called - abort entering a sleep mode. */
+    eStandardSleep,			/* Enter a sleep mode that will not last any longer than the expected idle time. */
+    eNoTasksWaitingTimeout	/* No tasks are waiting for a timeout so it is safe to enter a sleep mode that can only be exited by an external interrupt. */
 } eSleepModeStatus;
 
 
@@ -428,7 +429,8 @@ void vATask( void *pvParameters )
  * \defgroup xTaskCreateRestricted xTaskCreateRestricted
  * \ingroup Tasks
  */
-void vTaskAllocateMPURegions( xTaskHandle xTask, const xMemoryRegion * const pxRegions ) PRIVILEGED_FUNCTION;
+void vTaskAllocateMPURegions( xTaskHandle xTask,
+                              const xMemoryRegion * const pxRegions ) PRIVILEGED_FUNCTION;
 
 /**
  * task. h
@@ -582,7 +584,8 @@ void vTaskDelay( portTickType xTicksToDelay ) PRIVILEGED_FUNCTION;
  * \defgroup vTaskDelayUntil vTaskDelayUntil
  * \ingroup TaskCtrl
  */
-void vTaskDelayUntil( portTickType * const pxPreviousWakeTime, portTickType xTimeIncrement ) PRIVILEGED_FUNCTION;
+void vTaskDelayUntil( portTickType * const pxPreviousWakeTime,
+                      portTickType xTimeIncrement ) PRIVILEGED_FUNCTION;
 
 /**
  * task. h
@@ -629,7 +632,8 @@ void vTaskDelayUntil( portTickType * const pxPreviousWakeTime, portTickType xTim
  * \defgroup uxTaskPriorityGet uxTaskPriorityGet
  * \ingroup TaskCtrl
  */
-unsigned portBASE_TYPE uxTaskPriorityGet( xTaskHandle xTask ) PRIVILEGED_FUNCTION;
+unsigned portBASE_TYPE uxTaskPriorityGet( xTaskHandle xTask )
+PRIVILEGED_FUNCTION;
 
 /**
  * task. h
@@ -689,7 +693,8 @@ eTaskState eTaskGetState( xTaskHandle xTask ) PRIVILEGED_FUNCTION;
  * \defgroup vTaskPrioritySet vTaskPrioritySet
  * \ingroup TaskCtrl
  */
-void vTaskPrioritySet( xTaskHandle xTask, unsigned portBASE_TYPE uxNewPriority ) PRIVILEGED_FUNCTION;
+void vTaskPrioritySet( xTaskHandle xTask,
+                       unsigned portBASE_TYPE uxNewPriority ) PRIVILEGED_FUNCTION;
 
 /**
  * task. h
@@ -809,7 +814,8 @@ void vTaskResume( xTaskHandle xTaskToResume ) PRIVILEGED_FUNCTION;
  * \defgroup vTaskResumeFromISR vTaskResumeFromISR
  * \ingroup TaskCtrl
  */
-portBASE_TYPE xTaskResumeFromISR( xTaskHandle xTaskToResume ) PRIVILEGED_FUNCTION;
+portBASE_TYPE xTaskResumeFromISR( xTaskHandle xTaskToResume )
+PRIVILEGED_FUNCTION;
 
 /*-----------------------------------------------------------
  * SCHEDULER CONTROL
@@ -1014,7 +1020,8 @@ signed portBASE_TYPE xTaskResumeAll( void ) PRIVILEGED_FUNCTION;
  * is in any other state.
  *
  */
-signed portBASE_TYPE xTaskIsTaskSuspended( xTaskHandle xTask ) PRIVILEGED_FUNCTION;
+signed portBASE_TYPE xTaskIsTaskSuspended( xTaskHandle xTask )
+PRIVILEGED_FUNCTION;
 
 /*-----------------------------------------------------------
  * TASK UTILITIES
@@ -1073,7 +1080,7 @@ unsigned portBASE_TYPE uxTaskGetNumberOfTasks( void ) PRIVILEGED_FUNCTION;
  * \defgroup pcTaskGetTaskName pcTaskGetTaskName
  * \ingroup TaskUtils
  */
-signed char *pcTaskGetTaskName( xTaskHandle xTaskToQuery );
+signed char * pcTaskGetTaskName( xTaskHandle xTaskToQuery );
 
 /**
  * task.h
@@ -1093,7 +1100,8 @@ signed char *pcTaskGetTaskName( xTaskHandle xTaskToQuery );
  * @return The smallest amount of free stack space there has been (in bytes)
  * since the task referenced by xTask was created.
  */
-unsigned portBASE_TYPE uxTaskGetStackHighWaterMark( xTaskHandle xTask ) PRIVILEGED_FUNCTION;
+unsigned portBASE_TYPE uxTaskGetStackHighWaterMark( xTaskHandle xTask )
+PRIVILEGED_FUNCTION;
 
 /* When using trace macros it is sometimes necessary to include tasks.h before
 FreeRTOS.h.  When this is done pdTASK_HOOK_CODE will not yet have been defined,
@@ -1102,25 +1110,27 @@ fixed by simply guarding against the inclusion of these two prototypes unless
 they are explicitly required by the configUSE_APPLICATION_TASK_TAG configuration
 constant. */
 #ifdef configUSE_APPLICATION_TASK_TAG
-	#if configUSE_APPLICATION_TASK_TAG == 1
-		/**
-		 * task.h
-		 * <pre>void vTaskSetApplicationTaskTag( xTaskHandle xTask, pdTASK_HOOK_CODE pxHookFunction );</pre>
-		 *
-		 * Sets pxHookFunction to be the task hook function used by the task xTask.
-		 * Passing xTask as NULL has the effect of setting the calling tasks hook
-		 * function.
-		 */
-		void vTaskSetApplicationTaskTag( xTaskHandle xTask, pdTASK_HOOK_CODE pxHookFunction ) PRIVILEGED_FUNCTION;
+#if configUSE_APPLICATION_TASK_TAG == 1
+/**
+ * task.h
+ * <pre>void vTaskSetApplicationTaskTag( xTaskHandle xTask, pdTASK_HOOK_CODE pxHookFunction );</pre>
+ *
+ * Sets pxHookFunction to be the task hook function used by the task xTask.
+ * Passing xTask as NULL has the effect of setting the calling tasks hook
+ * function.
+ */
+void vTaskSetApplicationTaskTag( xTaskHandle xTask,
+                                 pdTASK_HOOK_CODE pxHookFunction ) PRIVILEGED_FUNCTION;
 
-		/**
-		 * task.h
-		 * <pre>void xTaskGetApplicationTaskTag( xTaskHandle xTask );</pre>
-		 *
-		 * Returns the pxHookFunction value assigned to the task xTask.
-		 */
-		pdTASK_HOOK_CODE xTaskGetApplicationTaskTag( xTaskHandle xTask ) PRIVILEGED_FUNCTION;
-	#endif /* configUSE_APPLICATION_TASK_TAG ==1 */
+/**
+ * task.h
+ * <pre>void xTaskGetApplicationTaskTag( xTaskHandle xTask );</pre>
+ *
+ * Returns the pxHookFunction value assigned to the task xTask.
+ */
+pdTASK_HOOK_CODE xTaskGetApplicationTaskTag( xTaskHandle xTask )
+PRIVILEGED_FUNCTION;
+#endif /* configUSE_APPLICATION_TASK_TAG ==1 */
 #endif /* ifdef configUSE_APPLICATION_TASK_TAG */
 
 /**
@@ -1133,7 +1143,8 @@ constant. */
  * pvParameter is passed to the hook function for the task to interpret as it
  * wants.
  */
-portBASE_TYPE xTaskCallApplicationTaskHook( xTaskHandle xTask, void *pvParameter ) PRIVILEGED_FUNCTION;
+portBASE_TYPE xTaskCallApplicationTaskHook( xTaskHandle xTask,
+        void * pvParameter ) PRIVILEGED_FUNCTION;
 
 /**
  * xTaskGetIdleTaskHandle() is only available if
@@ -1158,8 +1169,8 @@ xTaskHandle xTaskGetIdleTaskHandle( void );
  * the scheduler remaining suspended for an extended period.
  *
  * @param pxTaskStatusArray A pointer to an array of xTaskStatusType structures.
- * The array must contain at least one xTaskStatusType structure for each task 
- * that is under the control of the RTOS.  The number of tasks under the control 
+ * The array must contain at least one xTaskStatusType structure for each task
+ * that is under the control of the RTOS.  The number of tasks under the control
  * of the RTOS can be determined using the uxTaskGetNumberOfTasks() API function.
  *
  * @param uxArraySize The size of the array pointed to by the pxTaskStatusArray
@@ -1241,7 +1252,9 @@ xTaskHandle xTaskGetIdleTaskHandle( void );
 	}
 	</pre>
  */
-unsigned portBASE_TYPE uxTaskGetSystemState( xTaskStatusType *pxTaskStatusArray, unsigned portBASE_TYPE uxArraySize, unsigned long *pulTotalRunTime );
+unsigned portBASE_TYPE uxTaskGetSystemState( xTaskStatusType *
+        pxTaskStatusArray, unsigned portBASE_TYPE uxArraySize,
+        unsigned long * pulTotalRunTime );
 
 /**
  * task. h
@@ -1288,7 +1301,7 @@ unsigned portBASE_TYPE uxTaskGetSystemState( xTaskStatusType *pxTaskStatusArray,
  * \defgroup vTaskList vTaskList
  * \ingroup TaskUtils
  */
-void vTaskList( signed char *pcWriteBuffer ) PRIVILEGED_FUNCTION;
+void vTaskList( signed char * pcWriteBuffer ) PRIVILEGED_FUNCTION;
 
 /**
  * task. h
@@ -1342,7 +1355,7 @@ void vTaskList( signed char *pcWriteBuffer ) PRIVILEGED_FUNCTION;
  * \defgroup vTaskGetRunTimeStats vTaskGetRunTimeStats
  * \ingroup TaskUtils
  */
-void vTaskGetRunTimeStats( signed char *pcWriteBuffer ) PRIVILEGED_FUNCTION;
+void vTaskGetRunTimeStats( signed char * pcWriteBuffer ) PRIVILEGED_FUNCTION;
 
 /*-----------------------------------------------------------
  * SCHEDULER INTERNALS AVAILABLE FOR PORTING PURPOSES
@@ -1386,7 +1399,8 @@ portBASE_TYPE xTaskIncrementTick( void ) PRIVILEGED_FUNCTION;
  * portTICK_RATE_MS can be used to convert kernel ticks into a real time
  * period.
  */
-void vTaskPlaceOnEventList( xList * const pxEventList, portTickType xTicksToWait ) PRIVILEGED_FUNCTION;
+void vTaskPlaceOnEventList( xList * const pxEventList,
+                            portTickType xTicksToWait ) PRIVILEGED_FUNCTION;
 
 /*
  * THIS FUNCTION MUST NOT BE USED FROM APPLICATION CODE.  IT IS AN
@@ -1401,7 +1415,8 @@ void vTaskPlaceOnEventList( xList * const pxEventList, portTickType xTicksToWait
  * @return pdTRUE if the task being removed has a higher priority than the task
  * making the call, otherwise pdFALSE.
  */
-void vTaskPlaceOnEventListRestricted( xList * const pxEventList, portTickType xTicksToWait ) PRIVILEGED_FUNCTION;
+void vTaskPlaceOnEventListRestricted( xList * const pxEventList,
+                                      portTickType xTicksToWait ) PRIVILEGED_FUNCTION;
 
 /*
  * THIS FUNCTION MUST NOT BE USED FROM APPLICATION CODE.  IT IS AN
@@ -1418,7 +1433,8 @@ void vTaskPlaceOnEventListRestricted( xList * const pxEventList, portTickType xT
  * @return pdTRUE if the task being removed has a higher priority than the task
  * making the call, otherwise pdFALSE.
  */
-signed portBASE_TYPE xTaskRemoveFromEventList( const xList * const pxEventList ) PRIVILEGED_FUNCTION;
+signed portBASE_TYPE xTaskRemoveFromEventList( const xList * const pxEventList )
+PRIVILEGED_FUNCTION;
 
 /*
  * THIS FUNCTION MUST NOT BE USED FROM APPLICATION CODE.  IT IS ONLY
@@ -1444,7 +1460,8 @@ void vTaskSetTimeOutState( xTimeOutType * const pxTimeOut ) PRIVILEGED_FUNCTION;
  * Compare the time status now with that previously captured to see if the
  * timeout has expired.
  */
-portBASE_TYPE xTaskCheckForTimeOut( xTimeOutType * const pxTimeOut, portTickType * const pxTicksToWait ) PRIVILEGED_FUNCTION;
+portBASE_TYPE xTaskCheckForTimeOut( xTimeOutType * const pxTimeOut,
+                                    portTickType * const pxTicksToWait ) PRIVILEGED_FUNCTION;
 
 /*
  * Shortcut used by the queue implementation to prevent unnecessary call to
@@ -1462,19 +1479,25 @@ portBASE_TYPE xTaskGetSchedulerState( void ) PRIVILEGED_FUNCTION;
  * Raises the priority of the mutex holder to that of the calling task should
  * the mutex holder have a priority less than the calling task.
  */
-void vTaskPriorityInherit( xTaskHandle const pxMutexHolder ) PRIVILEGED_FUNCTION;
+void vTaskPriorityInherit( xTaskHandle const pxMutexHolder )
+PRIVILEGED_FUNCTION;
 
 /*
  * Set the priority of a task back to its proper priority in the case that it
  * inherited a higher priority while it was holding a semaphore.
  */
-void vTaskPriorityDisinherit( xTaskHandle const pxMutexHolder ) PRIVILEGED_FUNCTION;
+void vTaskPriorityDisinherit( xTaskHandle const pxMutexHolder )
+PRIVILEGED_FUNCTION;
 
 /*
  * Generic version of the task creation function which is in turn called by the
  * xTaskCreate() and xTaskCreateRestricted() macros.
  */
-signed portBASE_TYPE xTaskGenericCreate( pdTASK_CODE pxTaskCode, const signed char * const pcName, unsigned short usStackDepth, void *pvParameters, unsigned portBASE_TYPE uxPriority, xTaskHandle *pxCreatedTask, portSTACK_TYPE *puxStackBuffer, const xMemoryRegion * const xRegions ) PRIVILEGED_FUNCTION;
+signed portBASE_TYPE xTaskGenericCreate( pdTASK_CODE pxTaskCode,
+        const signed char * const pcName, unsigned short usStackDepth,
+        void * pvParameters, unsigned portBASE_TYPE uxPriority,
+        xTaskHandle * pxCreatedTask, portSTACK_TYPE * puxStackBuffer,
+        const xMemoryRegion * const xRegions ) PRIVILEGED_FUNCTION;
 
 /*
  * Get the uxTCBNumber assigned to the task referenced by the xTask parameter.

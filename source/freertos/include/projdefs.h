@@ -1,5 +1,5 @@
 /*
-    FreeRTOS V7.5.3 - Copyright (C) 2013 Real Time Engineers Ltd. 
+    FreeRTOS V7.5.3 - Copyright (C) 2013 Real Time Engineers Ltd.
     All rights reserved
 
     VISIT http://www.FreeRTOS.org TO ENSURE YOU ARE USING THE LATEST VERSION.
@@ -67,7 +67,7 @@
 #define PROJDEFS_H
 
 /* Defines the prototype to which task functions must conform. */
-typedef void (*pdTASK_CODE)( void * );
+typedef void (*pdTASK_CODE)( void *);
 
 #define pdFALSE		( ( portBASE_TYPE ) 0 )
 #define pdTRUE		( ( portBASE_TYPE ) 1 )

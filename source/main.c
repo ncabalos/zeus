@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   main.c
  * Author: ncabalos
  *
@@ -24,7 +24,7 @@
 #endif
 
 /* Global Variables ***********************************************************/
-UART_INFO *DebugUART;
+UART_INFO * DebugUART;
 
 /* Function Protoypes *********************************************************/
 static void HardwareInit(void);
@@ -34,7 +34,7 @@ static void HardwareInit(void);
 
 void HardwareInit(void)
 {
-    DebugUART = UartInit(UART_2,115200UL,SERIO_1STOPBIT,SERIO_NOPARITY);
+    DebugUART = UartInit(UART_2, 115200UL, SERIO_1STOPBIT, SERIO_NOPARITY);
 }
 
 void ModuleInit(void)
@@ -42,7 +42,7 @@ void ModuleInit(void)
     TerminalInit(DebugUART);
 }
 
-int main(int argc, char** argv)
+int main(int argc, char ** argv)
 {
     HardwareInit();
     ModuleInit();
@@ -51,7 +51,7 @@ int main(int argc, char** argv)
 }
 #else
 
-int main(int argc, char** argv)
+int main(int argc, char ** argv)
 {
     UnityBegin();
     UnityEnd();

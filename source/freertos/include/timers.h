@@ -1,5 +1,5 @@
 /*
-    FreeRTOS V7.5.3 - Copyright (C) 2013 Real Time Engineers Ltd. 
+    FreeRTOS V7.5.3 - Copyright (C) 2013 Real Time Engineers Ltd.
     All rights reserved
 
     VISIT http://www.FreeRTOS.org TO ENSURE YOU ARE USING THE LATEST VERSION.
@@ -68,7 +68,7 @@
 #define TIMERS_H
 
 #ifndef INC_FREERTOS_H
-	#error "include FreeRTOS.h must appear in source files before include timers.h"
+#error "include FreeRTOS.h must appear in source files before include timers.h"
 #endif
 
 /*lint -e537 This headers are only multiply included if the application code
@@ -92,12 +92,12 @@ as defined below. */
  * MACROS AND DEFINITIONS
  *----------------------------------------------------------*/
 
- /**
- * Type by which software timers are referenced.  For example, a call to
- * xTimerCreate() returns an xTimerHandle variable that can then be used to
- * reference the subject timer in calls to other software timer API functions
- * (for example, xTimerStart(), xTimerReset(), etc.).
- */
+/**
+* Type by which software timers are referenced.  For example, a call to
+* xTimerCreate() returns an xTimerHandle variable that can then be used to
+* reference the subject timer in calls to other software timer API functions
+* (for example, xTimerStart(), xTimerReset(), etc.).
+*/
 typedef void * xTimerHandle;
 
 /* Define the prototype to which timer callback functions must conform. */
@@ -170,7 +170,7 @@ typedef void (*tmrTIMER_CALLBACK)( xTimerHandle xTimer );
  *
  * 	   // Optionally do something if the pxTimer parameter is NULL.
  * 	   configASSERT( pxTimer );
- * 	
+ *
  *     // Which timer expired?
  *     lArrayIndex = ( long ) pvTimerGetTimerID( pxTimer );
  *
@@ -231,7 +231,9 @@ typedef void (*tmrTIMER_CALLBACK)( xTimerHandle xTimer );
  * }
  * @endverbatim
  */
-xTimerHandle xTimerCreate( const signed char * const pcTimerName, portTickType xTimerPeriodInTicks, unsigned portBASE_TYPE uxAutoReload, void * pvTimerID, tmrTIMER_CALLBACK pxCallbackFunction ) PRIVILEGED_FUNCTION;
+xTimerHandle xTimerCreate( const signed char * const pcTimerName,
+                           portTickType xTimerPeriodInTicks, unsigned portBASE_TYPE uxAutoReload,
+                           void * pvTimerID, tmrTIMER_CALLBACK pxCallbackFunction ) PRIVILEGED_FUNCTION;
 
 /**
  * void *pvTimerGetTimerID( xTimerHandle xTimer );
@@ -253,7 +255,7 @@ xTimerHandle xTimerCreate( const signed char * const pcTimerName, portTickType x
  *
  * See the xTimerCreate() API function example usage scenario.
  */
-void *pvTimerGetTimerID( xTimerHandle xTimer ) PRIVILEGED_FUNCTION;
+void * pvTimerGetTimerID( xTimerHandle xTimer ) PRIVILEGED_FUNCTION;
 
 /**
  * portBASE_TYPE xTimerIsTimerActive( xTimerHandle xTimer );
@@ -293,7 +295,7 @@ void *pvTimerGetTimerID( xTimerHandle xTimer ) PRIVILEGED_FUNCTION;
 portBASE_TYPE xTimerIsTimerActive( xTimerHandle xTimer ) PRIVILEGED_FUNCTION;
 
 /**
- * xTimerGetTimerDaemonTaskHandle() is only available if 
+ * xTimerGetTimerDaemonTaskHandle() is only available if
  * INCLUDE_xTimerGetTimerDaemonTaskHandle is set to 1 in FreeRTOSConfig.h.
  *
  * Simply returns the handle of the timer service/daemon task.  It it not valid
@@ -473,7 +475,7 @@ xTaskHandle xTimerGetTimerDaemonTaskHandle( void );
  * }
  * @endverbatim
  */
- #define xTimerChangePeriod( xTimer, xNewPeriod, xBlockTime ) xTimerGenericCommand( ( xTimer ), tmrCOMMAND_CHANGE_PERIOD, ( xNewPeriod ), NULL, ( xBlockTime ) )
+#define xTimerChangePeriod( xTimer, xNewPeriod, xBlockTime ) xTimerGenericCommand( ( xTimer ), tmrCOMMAND_CHANGE_PERIOD, ( xNewPeriod ), NULL, ( xBlockTime ) )
 
 /**
  * portBASE_TYPE xTimerDelete( xTimerHandle xTimer, portTickType xBlockTime );
@@ -949,7 +951,10 @@ xTaskHandle xTimerGetTimerDaemonTaskHandle( void );
  * for use by the kernel only.
  */
 portBASE_TYPE xTimerCreateTimerTask( void ) PRIVILEGED_FUNCTION;
-portBASE_TYPE xTimerGenericCommand( xTimerHandle xTimer, portBASE_TYPE xCommandID, portTickType xOptionalValue, signed portBASE_TYPE *pxHigherPriorityTaskWoken, portTickType xBlockTime ) PRIVILEGED_FUNCTION;
+portBASE_TYPE xTimerGenericCommand( xTimerHandle xTimer,
+                                    portBASE_TYPE xCommandID, portTickType xOptionalValue,
+                                    signed portBASE_TYPE * pxHigherPriorityTaskWoken,
+                                    portTickType xBlockTime ) PRIVILEGED_FUNCTION;
 
 #ifdef __cplusplus
 }

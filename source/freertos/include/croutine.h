@@ -1,5 +1,5 @@
 /*
-    FreeRTOS V7.5.3 - Copyright (C) 2013 Real Time Engineers Ltd. 
+    FreeRTOS V7.5.3 - Copyright (C) 2013 Real Time Engineers Ltd.
     All rights reserved
 
     VISIT http://www.FreeRTOS.org TO ENSURE YOU ARE USING THE LATEST VERSION.
@@ -67,7 +67,7 @@
 #define CO_ROUTINE_H
 
 #ifndef INC_FREERTOS_H
-	#error "include FreeRTOS.h must appear in source files before include croutine.h"
+#error "include FreeRTOS.h must appear in source files before include croutine.h"
 #endif
 
 #include "list.h"
@@ -84,14 +84,18 @@ typedef void * xCoRoutineHandle;
 /* Defines the prototype to which co-routine functions must conform. */
 typedef void (*crCOROUTINE_CODE)( xCoRoutineHandle, unsigned portBASE_TYPE );
 
-typedef struct corCoRoutineControlBlock
-{
-	crCOROUTINE_CODE 		pxCoRoutineFunction;
-	xListItem				xGenericListItem;	/*< List item used to place the CRCB in ready and blocked queues. */
-	xListItem				xEventListItem;		/*< List item used to place the CRCB in event lists. */
-	unsigned portBASE_TYPE 	uxPriority;			/*< The priority of the co-routine in relation to other co-routines. */
-	unsigned portBASE_TYPE 	uxIndex;			/*< Used to distinguish between co-routines when multiple co-routines use the same co-routine function. */
-	unsigned short 		uxState;			/*< Used internally by the co-routine implementation. */
+typedef struct corCoRoutineControlBlock {
+    crCOROUTINE_CODE 		pxCoRoutineFunction;
+    xListItem
+    xGenericListItem;	/*< List item used to place the CRCB in ready and blocked queues. */
+    xListItem
+    xEventListItem;		/*< List item used to place the CRCB in event lists. */
+    unsigned portBASE_TYPE
+    uxPriority;			/*< The priority of the co-routine in relation to other co-routines. */
+    unsigned portBASE_TYPE
+    uxIndex;			/*< Used to distinguish between co-routines when multiple co-routines use the same co-routine function. */
+    unsigned short
+    uxState;			/*< Used internally by the co-routine implementation. */
 } corCRCB; /* Co-routine control block.  Note must be identical in size down to uxPriority with tskTCB. */
 
 /**
@@ -153,7 +157,7 @@ typedef struct corCoRoutineControlBlock
  {
  unsigned char ucParameterToPass;
  xTaskHandle xHandle;
-		
+
      // Create two co-routines at priority 0.  The first is given index 0
      // so (from the code above) toggles LED 5 every 200 ticks.  The second
      // is given index 1 so toggles LED 6 every 400 ticks.
@@ -166,7 +170,8 @@ typedef struct corCoRoutineControlBlock
  * \defgroup xCoRoutineCreate xCoRoutineCreate
  * \ingroup Tasks
  */
-signed portBASE_TYPE xCoRoutineCreate( crCOROUTINE_CODE pxCoRoutineCode, unsigned portBASE_TYPE uxPriority, unsigned portBASE_TYPE uxIndex );
+signed portBASE_TYPE xCoRoutineCreate( crCOROUTINE_CODE pxCoRoutineCode,
+                                       unsigned portBASE_TYPE uxPriority, unsigned portBASE_TYPE uxIndex );
 
 
 /**
@@ -740,7 +745,8 @@ void vCoRoutineSchedule( void );
  * Removes the current co-routine from its ready list and places it in the
  * appropriate delayed list.
  */
-void vCoRoutineAddToDelayedList( portTickType xTicksToDelay, xList *pxEventList );
+void vCoRoutineAddToDelayedList( portTickType xTicksToDelay,
+                                 xList * pxEventList );
 
 /*
  * This function is intended for internal use by the queue implementation only.
@@ -749,7 +755,7 @@ void vCoRoutineAddToDelayedList( portTickType xTicksToDelay, xList *pxEventList 
  * Removes the highest priority co-routine from the event list and places it in
  * the pending ready list.
  */
-signed portBASE_TYPE xCoRoutineRemoveFromEventList( const xList *pxEventList );
+signed portBASE_TYPE xCoRoutineRemoveFromEventList( const xList * pxEventList );
 
 #ifdef __cplusplus
 }
