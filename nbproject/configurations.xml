@@ -10,6 +10,7 @@
       <itemPath>source/HardwareConfig.h</itemPath>
       <itemPath>source/terminal.h</itemPath>
       <itemPath>source/version.h</itemPath>
+      <itemPath>source/pwm.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"

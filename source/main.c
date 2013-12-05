@@ -42,6 +42,10 @@ void ModuleInit(void)
     TerminalInit(DebugUART);
 }
 
+extern void execute_pwm_command(char * command);
+extern uint16_t is_number(char * str);
+char test[] = "pwm +1 555";
+char test2[] = "-100";
 int main(int argc, char ** argv)
 {
     HardwareInit();
