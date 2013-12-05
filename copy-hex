@@ -9,5 +9,12 @@ VERSION_STRING=\"$MAJOR_NUMBER.$MINOR_NUMBER\"
 SHA_STRING=\"$(echo $SHA_NUMBER | tr '[:lower:]' '[:upper:]')\"
 FILENAME=zeus-$MAJOR_NUMBER.$MINOR_NUMBER-$SHA_NUMBER.hex
 
+if [ ! -d "$OUTPUT_PATH" ]
+then
+	# Control will enter here if $DIRECTORY doesn't exist.
+	echo "Directory doesn't exist, creating it now"
+	mkdir "$OUTPUT_PATH"
+fi
+
 echo "Copying $IMAGE_PATH to $OUTPUT_PATH/$FILENAME"
 cp $IMAGE_PATH $OUTPUT_PATH/$FILENAME
