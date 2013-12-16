@@ -1,0 +1,12 @@
+--suffix=none
+--recursive
+--indent=spaces=4
+--style=linux
+--indent-switches
+--break-blocks
+--pad-oper
+--delete-empty-lines
+--align-pointer=middle
+--align-reference=name
+--max-code-length=80
+--break-after-logical
