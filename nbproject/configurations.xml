@@ -10,7 +10,7 @@
       <itemPath>source/HardwareConfig.h</itemPath>
       <itemPath>source/terminal.h</itemPath>
       <itemPath>source/version.h</itemPath>
-      <itemPath>source/pwm.h</itemPath>
+      <itemPath>source/servo.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -39,6 +39,7 @@
       <itemPath>source/serio.c</itemPath>
       <itemPath>source/terminal.c</itemPath>
       <itemPath>source/parser.c</itemPath>
+      <itemPath>source/servo.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

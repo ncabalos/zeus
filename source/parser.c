@@ -5,7 +5,7 @@
 #include <string.h>
 
 #include "version.h"
-#include "pwm.h"
+#include "servo.h"
 
 enum {
     COMMAND_PWM,
@@ -172,6 +172,6 @@ uint16_t execute_pwm_command(char * command)
         param_num++;
     }
     terminal_output("Setting pwm\r\n");
-    PwmSetDutyCycle(channel, duty_cycle);
+    ServoSetPulseWidth(channel, duty_cycle);
     return 0;
 }
