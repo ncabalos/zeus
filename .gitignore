@@ -4,4 +4,5 @@ dist/
 nbproject/private/*
 nbproject/*.mk
 nbproject/*.properties
+nbproject/*.bash
 source/version.h
