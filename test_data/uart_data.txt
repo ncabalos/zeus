@@ -1,0 +1,13 @@
+wait 20 ms
+"help"
+0A
+wait 100 ms
+"version"
+0D 0A
+wait 100 ms
+"version2"
+0A
+wait 100 ms
+0A
+wait 100 ms
+0D 0A
