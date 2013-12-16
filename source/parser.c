@@ -171,6 +171,7 @@ uint16_t execute_pwm_command(char * command)
         chptr = strtok(NULL, " ");
         param_num++;
     }
+
     terminal_output("Setting pwm\r\n");
     ServoSetPulseWidth(channel, duty_cycle);
     return 0;

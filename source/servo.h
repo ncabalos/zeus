@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   pwm.h
  * Author: ncabalos
  *
@@ -8,9 +8,9 @@
 #ifndef SERVO_H
 #define	SERVO_H
 
-typedef struct servo_info_s{
+typedef struct servo_info_s {
     uint16_t duty_cycle;
-}SERVO_INFO;
+} SERVO_INFO;
 
 extern void ServoInit(void);
 extern uint16_t ServoSetPulseWidth(uint16_t channel, uint16_t pulse_width);

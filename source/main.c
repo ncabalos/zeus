@@ -35,7 +35,6 @@ static void HardwareInit(void);
 void HardwareInit(void)
 {
     DebugUART = UartInit(UART_2, 115200UL, SERIO_1STOPBIT, SERIO_NOPARITY);
-
 }
 
 void ModuleInit(void)
