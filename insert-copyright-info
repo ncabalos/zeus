@@ -1,0 +1,29 @@
+#!/bin/sh
+ROOT_DIR="./source/"
+# Go through directory looking for files with .c extension
+echo "Processing .c files"
+for FILENAME in $(find $ROOT_DIR -type f -name "*.c")
+do
+if [[ -n $(grep "Copyright" --max-count=1 -no ${FILENAME}) ]]
+then
+	echo "File unchanged.......$FILENAME"
+else
+	cat copyright-info.txt $FILENAME > tmp
+	mv tmp $FILENAME
+	echo "Insert copyright.....$FILENAME"
+fi
+done
+
+echo "Processing .h files"
+for FILENAME in $(find $ROOT_DIR -type f -name "*.h")
+do
+if [[ -n $(grep "Copyright" --max-count=1 -no ${FILENAME}) ]]
+then
+	echo "File unchanged.......$FILENAME"
+else
+	cat copyright-info.txt $FILENAME > tmp
+	mv tmp $FILENAME
+	echo "Insert copyright.....$FILENAME"
+fi
+done
+exit 0
