@@ -1,3 +1,5 @@
+"help"
+0d 0a
 wait 500 ms
 "pwm 100 555"
 0d 0a
@@ -7,3 +9,5 @@ wait 500 ms
 wait 500 ms
 "pwm 123 3f3"
 0d 0a
+wait 500 ms
+

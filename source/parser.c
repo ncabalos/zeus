@@ -22,7 +22,22 @@ enum {
     COMMAND_MAX
 };
 
+typedef struct COMMAND_ENTRY_S{
+    uint16_t command_id;
+    char * command;
+    char * description;
+}COMMAND_ENTRY;
+
+COMMAND_ENTRY command_entries[] = {
+    {COMMAND_PWM,"pwm","pwm <channel> <duty cycle>"},
+    {COMMAND_HELP,"help","Displays this menu"},
+    {COMMAND_VERSION,"version","Displays firmware version number"},
+    {NULL}
+};
+
 #define MAX_BUFFER_SIZE 64
+
+/*
 const char * commands[COMMAND_MAX] = {
     "pwm",
     "help",
@@ -36,6 +51,7 @@ const char * help_strings[HELP_COMMAND_STRING_NUMBER] = {
     "help    - Displays this menu\r\n",
     "version - Displays firmware version number\r\n"
 };
+*/
 
 const char * invalid_string = "Command not found\r\n";
 const char * version_string = VERSION_STRING;
@@ -54,16 +70,20 @@ uint16_t parse_command(char * command)
     uint16_t result;
     char * chptr;
     char * parameters;
+    COMMAND_ENTRY * command_entry;
+    
     chptr = strtok(command, " ");
-
-    for(i = 0; i < COMMAND_MAX; i++) {
-        if(strcmp(commands[i], chptr) == 0) {
+    i = 0;
+    while(command_entries[i].command != NULL){
+        command_entry = &command_entries[i];
+        if(strcmp(command_entry->command, chptr) == 0){
             parameters = command + strlen(chptr) + 1;
             break;
         }
+        i++;
     }
 
-    switch(i) {
+    switch(command_entry->command_id) {
         case COMMAND_HELP:
             result = execute_help_command();
             break;
@@ -88,9 +108,12 @@ uint16_t parse_command(char * command)
 uint16_t execute_help_command(void)
 {
     uint16_t i;
+    COMMAND_ENTRY * command_entry;
 
-    for(i = 0; i < HELP_COMMAND_STRING_NUMBER; i++) {
-        terminal_output(help_strings[i]);
+    for(i = 0; command_entries[i].command != NULL ; i++) {
+        command_entry = &command_entries[i];
+        terminal_output(command_entry->description);
+        terminal_output("\r\n");
     }
 
     return 0;
