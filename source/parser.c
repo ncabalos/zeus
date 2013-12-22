@@ -37,22 +37,6 @@ COMMAND_ENTRY command_entries[] = {
 
 #define MAX_BUFFER_SIZE 64
 
-/*
-const char * commands[COMMAND_MAX] = {
-    "pwm",
-    "help",
-    "version"
-};
-
-#define HELP_COMMAND_STRING_NUMBER 4
-const char * help_strings[HELP_COMMAND_STRING_NUMBER] = {
-    "List of commands:\r\n",
-    "pwm     - pwm <channel> <duty cycle>\r\n",
-    "help    - Displays this menu\r\n",
-    "version - Displays firmware version number\r\n"
-};
-*/
-
 const char * invalid_string = "Command not found\r\n";
 const char * version_string = VERSION_STRING;
 const char * sha_string = SHA_STRING;
