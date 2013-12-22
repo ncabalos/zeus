@@ -1,0 +1,47 @@
+## SCL Builder Setup File: Do not edit!!
+
+## VERSION: MPLAB X
+## FORMAT:  v2.00.01
+## DEVICE:  PIC24FJ256GB110
+
+## PINREGACTIONS
+cyc
+No Repeat
+--
+&
+## ADVPINREGACTIONS
+--
+&
+--
+COND1
+Any
+
+
+
+0
+cyc
+
+--
+&
+## CLOCK
+&
+## STIMULUSFILE
+help_command_test
+U2RXREG
+Message
+
+1
+D:\zeus\test\test_command_help.txt
+Pkt
+No
+
+--
+&
+## RESPONSEFILE
+&
+## ASYNCH
+&
+## ADVANCEDSCL
+
+0
+&
