@@ -1,4 +1,4 @@
-/****************************************************************************** 
+/******************************************************************************
  * Copyright (C) Nathaniel Abalos - All Rights Reserved                       *
  * Contents of this file is proprietary and confidential. Unauthorized        *
  * copying of this file, via any medium is strictly prohibited.               *

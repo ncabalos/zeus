@@ -1,4 +1,4 @@
-/****************************************************************************** 
+/******************************************************************************
  * Copyright (C) Nathaniel Abalos - All Rights Reserved                       *
  * Contents of this file is proprietary and confidential. Unauthorized        *
  * copying of this file, via any medium is strictly prohibited.               *
@@ -22,16 +22,16 @@ enum {
     COMMAND_MAX
 };
 
-typedef struct COMMAND_ENTRY_S{
+typedef struct COMMAND_ENTRY_S {
     uint16_t command_id;
     char * command;
     char * description;
-}COMMAND_ENTRY;
+} COMMAND_ENTRY;
 
 COMMAND_ENTRY command_entries[] = {
-    {COMMAND_PWM,"pwm","pwm <channel> <duty cycle>"},
-    {COMMAND_HELP,"help","Displays this menu"},
-    {COMMAND_VERSION,"version","Displays firmware version number"},
+    {COMMAND_PWM, "pwm", "pwm <channel> <duty cycle>"},
+    {COMMAND_HELP, "help", "Displays this menu"},
+    {COMMAND_VERSION, "version", "Displays firmware version number"},
     {NULL}
 };
 
@@ -71,15 +71,17 @@ uint16_t parse_command(char * command)
     char * chptr;
     char * parameters;
     COMMAND_ENTRY * command_entry;
-    
     chptr = strtok(command, " ");
     i = 0;
-    while(command_entries[i].command != NULL){
+
+    while(command_entries[i].command != NULL) {
         command_entry = &command_entries[i];
-        if(strcmp(command_entry->command, chptr) == 0){
+
+        if(strcmp(command_entry->command, chptr) == 0) {
             parameters = command + strlen(chptr) + 1;
             break;
         }
+
         i++;
     }
 
